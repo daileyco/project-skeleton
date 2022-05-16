@@ -12,7 +12,7 @@ Proposals, prompts, outlines, ... anything relevant to the conception of the pro
   
 ## 01-Data
   
-Data in its downloaded format is "raw" (e.g., .xlsx, .dat, .csv, ...) which is imported and stored as R format (e.g., .rds, .rdata) during "processing" and finalized to an "analytic" dataset. *Note: generally, "00-" prefix means don't modify or rewrite the files within.*
+Data in downloaded formats are "raw" (e.g., .xlsx, .dat, .csv, ...). We import and store data in R formats (e.g., .rds, .rdata) during "processing". Data cleaning and recoding finalize "analytic" datasets. *Note: generally, "00-" prefix means don't modify or rewrite the files within.*
   
 * Sub-directories
   + 00-Raw-Data
@@ -21,21 +21,25 @@ Data in its downloaded format is "raw" (e.g., .xlsx, .dat, .csv, ...) which is i
 
 ## 02-Scripts
 
-Envisioned as a linear path from raw data management to final figure creation. Data Wrangling to transition through data directories; exploration to catch everything else and include figure generating scripts; inferential analysis to fit models, calculate stats, general computation/programming, automation of other programs using R. Each has its own typical set of script types.
+Envisioned as a linear path from raw data management to final figure creation. Playground to catch everything incomplete; data wrangling to transition through data directories; helper functions to hold project specific functions or those oriented to external programs; visualization is obvious; analysis to fit models, calculate stats, general computation/programming. Each has its own typical set of script types.
 
 * Sub-directories and typical scripts
+  + 00-Playground
+    - exploratory code dump, in-progress scripts, under construction, placeholder for other scripts
   + 01-Data-Wrangling
-    + download_Data_\* : scripts to automate the data download from online
-    + process_Data_\* : scripts to process raw data
-    + prep_Files_\* : scripts to write files for external program use
-  + 02-Exploration
-    + playground_\* : code dump, under construction, placeholder for other scripts
-    + generate_Figure_\* : scripts to create figures, plots, images, interactive visualizations
-    + generate_Table_\* : scripts to create tables
-  + 03-Inferential-Analysis
-    + analyze_\* : scripts to run analyses within R
-    + run_Program_\* : scripts to automate external programs
-    + process_Results_\* : scripts to process results from external program analyses
+    - download_Data_\* : scripts to automate the data download from online
+    - process_Data_\* : scripts to process raw data
+    - prep_Files_\* : scripts to write files for external program use
+    - process_Results_\* : scripts to process results from external program analyses
+  + 02-Helper-Functions
+    - repeated, modular, specific, useful code
+    - run_Program_\* : scripts to automate external programs
+  + 03-Visualization
+    - plot_\* : pretty self-explanatory, fundamental units to generate_Figure scripts
+    - generate_Figure_\* : scripts to create high-level figures, plots, images, interactive visualizations
+    - generate_Table_\* : scripts to create tables
+  + 04-Analysis
+    - analyze_\* : scripts to run analyses within R
 
 ## 03-Output
 
@@ -50,7 +54,8 @@ Store the goodies to show everyone else.
 ## 04-Report
 
 * Sub-directories
-  + 01-Notebook (detailed report, write-up, long-winded)
+  + 01-Notebook (detailed reports, write-ups, long-winded, process-oriented)
+    - reproducibility_notebook.RMD : quasi-stream-of-thought writing, deeply woven web of scripts and analytical directions
   + 02-Presentation (slide decks)
   + 03-Manuscript (polished for publication)
 
