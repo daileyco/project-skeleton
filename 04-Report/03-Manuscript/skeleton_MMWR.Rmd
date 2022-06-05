@@ -1,0 +1,454 @@
+---
+title: "MMWR Report Skeleton"
+author: Cody Dailey [^epibios]
+link-citations: yes
+date: '`r format(Sys.Date(), "%d %B %Y")`'
+output: 
+  bookdown::word_document2:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+# bibliography:
+# biblio-style: apalike
+# csl: 
+# nocite: "@*"
+editor_options: 
+  chunk_output_type: console
+knit: (
+  function(input, ...) {
+    rmarkdown::render( 
+      input       = input,     
+      output_file = paste0(
+          xfun::sans_ext(input), 
+          "_DRAFT_", 
+          format(Sys.Date(), "%Y%m%d")
+      )
+      ) 
+      }
+      )
+    
+---
+
+[^epibios]:Department of Epidemiology and Biostatistics, University of Georgia, Athens, GA, USA
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir=rstudioapi::getActiveProject(), 
+                     echo = TRUE, 
+                     cache = FALSE, 
+                     fig.width = 6, 
+                     fig.height = 6*9/16, 
+                     out.width = "100%",
+                     out.height = "90%", 
+                     fig.topcaption = TRUE)
+```
+
+
+Guidelines embedded for MMWR. Even if not seeking to publish there, the guidelines give a useful structure for early manuscript drafts. 
+
+
+
+# MMWR AUTHOR GUIDELINES {-}
+
+```{r}
+#MMWR Guideline
+# Full Reports. A report of a completed investigation or study that answers a question of public health importance. Ideally, the answer should be one that can guide future public health practice. Authors should check previously published MMWR  reports similar to their submissions to determine their own optimal format and structure. Full Reports should be no longer than 1,400 words and include no more than 10 references and a total of no more than three tables, figures, and/or boxes. Reports exceeding these limits might be considered if, in the opinion of the editor of the Weekly , the exception is justified.
+# (TIPS: A hallmark of MMWR  reports is simplicity. These reports are intended only to summarize the analysis and recommendations, not to provide every detail. The strict 10-reference rule is intended to limit the scope of the report. A good test for simplicity is whether, in a sentence or two, you can tell a casual reader what the report is about and what should be done.)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# RESEARCH QUESTION: What is the extent of COVID-19 prevention behaviors among UGA students?
+
+# Summary
+```{r}
+#MMWR Specific Guideline
+# Summary box. In 1 or 2 sentences for each, authors should answer the following: What is already known on this topic? What is added by this report? and What are the implications for public health practice?  These answers contain the key public health message, as well as the justification for the publication. Total word limit should be no more than 75‒100 words (see examples below). Answers longer than 100 words will be edited to meet the word limit.
+
+# Examples:
+# # Summary
+# # # What is already known about this topic?
+# # # # Eight states, including Colorado, have legalized recreational marijuana use among persons aged ≥21 years. The association between marijuana use and occupational injury is of public health concern.
+# # # What is added by this report?
+# # # # During 2014–2015, 14.6% of 10,169 Colorado adult workers reported using marijuana in the past 30 days. The highest prevalences of current use were among young adults and men, and among adults working in the Accommodation and Food Services industry (30.1%) and Food Preparation and Serving occupation (32.2%).
+# # # What are the implications for public health practice?
+# # # # By understanding the occupations and industries of workers who report recreational marijuana use, employers can develop appropriately targeted workplace marijuana policies and safety awareness campaigns.
+# # 
+# # Summary
+# # # What is already known about this topic?
+# # # # Surveillance is the cornerstone of polio eradication efforts.
+# # # What is added by this report?
+# # # # In 2017, 22 wild poliovirus cases were reported from two countries (Afghanistan and Pakistan), the fewest number ever reported globally. Polio cases caused by circulating vaccine-derived polioviruses increased from four in 2016 to 96 in 2017 because of large outbreaks in Syria and the Democratic Republic of the Congo. Although surveillance performance indicators are improving at the national level, gaps remain, including at subnational levels.
+# # # What are the implications for public health practice?
+# # # # As polio cases decline, sensitive and timely surveillance becomes even more important. As long as polioviruses circulate in any country, all countries remain at risk.
+
+```
+
+**What is already known about this topic?**
+
+
+**What is added by this report?**
+
+
+**What are the implications for public health practice?**
+
+
+
+  
+\newpage
+# Introduction {#introduction}
+
+```{r}
+#MMWR Specific Guideline
+# Introductory paragraph. The first paragraph of a Full Report is similar to both a newspaper lead paragraph (i.e., who, what, when, where, why, and how?) and the abstract of a report in a typical medical journal and is limited to 150–200 words. The introductory paragraph should contain the following components: 1) background (what is the problem? why is this worth writing about?), 2) method of analysis (who did what, using what data, and why?), 3) key findings (summarize 1 or 2 main results and any actions that resulted), and 4) public health message (what should be done by public health practitioners or, if relevant, by clinicians or the public?). All information regarding methods, data sources and results in the introductory paragraph is repeated elsewhere in the report.
+# Additional background (if needed). Each Full Report should be understandable by an informed medical or public health professional without special knowledge of the subject. If all essential background information will not fit in the Introductory paragraph, that background should be placed in a second introductory paragraph, before Methods.
+```
+
+
+
+
+\newpage  
+# Methods
+```{r}
+#MMWR Specific Guideline
+# Methods. For most reports, the second section should be a concise summary (1 or 2 paragraphs) of the methods used to conduct the analysis. Important components of this section might include the sources of data, a statement of how the data were collected, case definitions or participant selection criteria, the period of study, types of specimens taken and tests performed (e.g., serology, culture, or toxicology), and statistical methods used. For survey and surveillance data, response rates should be specified. For statistical software, provide the version and manufacturer in parentheses after the software name, as shown in the following example: “SAS (version 9.4; SAS Institute)” was used to conduct all analyses.
+```
+
+```{r, echo=F, results='hide', message=F, warning=F, error=F}
+# dput(RStudio.Version())
+rs.version <- list(citation = structure(list(structure(list(title = "RStudio: Integrated Development Environment for R",
+                                                            author = structure(list(list(given = "RStudio Team", 
+                                                                                         family = NULL,
+                                                                                         role = NULL, 
+                                                                                         email = NULL, 
+                                                                                         comment = NULL)), 
+                                                                               class = "person"),
+                                                            organization = "RStudio, PBC", 
+                                                            address = "Boston, MA", 
+                                                            year = "2022", 
+                                                            url = "http://www.rstudio.com/"), 
+                                                       bibtype = "Manual", 
+                                                       textVersion = "RStudio Team (2022). RStudio: Integrated Development Environment for R. RStudio, PBC, Boston, MA URL http://www.rstudio.com/.")), 
+                                        mheader = "To cite RStudio in publications use:", 
+                                        class = c("citation", "bibentry")), 
+                   mode = "desktop", 
+                   version = structure(list(c(2022L, 2L, 2L, 485L)), 
+                                       class = c("package_version", "numeric_version")), 
+                   long_version = "2022.02.2+485", 
+                   release_name = "Prairie Trillium")
+```
+
+
+All analyses were carried out using R (`r gsub("R ", "", version$version.string)`, `r version$nickname`; @R-base) and RStudio (Windows 10 Desktop Version `r paste0(rs.version$version, ", ", rs.version$release_name)`; @rstudio). This document was prepared using the `bookdown` [@R-bookdown] and `rmarkdown` [@R-rmarkdown] packages within the RStudio IDE. 
+
+
+
+```{r, echo=F, results='hide', message=F, warning=F, error=F}
+# need to check automatic writing of these cites, and the location for visual editor .bib
+my.packages <- c(# Data Import/Export
+                 "readxl", "writexl",
+                 # Data Management
+                 "dplyr", "magrittr", "tidyr",
+                 # Tables and Figures
+                 "knitr", "flextable", "officedown", "viridis")
+# # need to check automatic writing of these cites, and the location for visual editor .bib
+# knitr::write_bib(c(# All Loaded Packages
+#                    .packages(), 
+#                    # Specified Packages
+#                    my.packages, 
+#                    # Document Packages
+#                    'rmarkdown', 
+#                    'bookdown'), 
+#                  file = './04-Report/packages.bib')
+
+sapply(my.packages, library, character.only=T)
+rm(my.packages)
+```
+
+
+
+
+# Results
+
+```{r}
+#MMWR Specific Guideline
+# Results. The results section is a concise highlighting of the major results of the analysis. Examples might include elements of the descriptive (i.e., time, place, person) and epidemiologic results, disease trends and rates, treatments, and outcomes. Minor results from tables or figures should not be highlighted in results. Case reports and series should include details on exposure, signs and symptoms, initial diagnosis, laboratory and radiologic findings, treatment, clinical course, and outcome. Generally, data highlighted in the text also are presented in a table or figure.
+```
+
+
+```{r, echo=F, results='hide', message=F, warning=F, error=F}
+
+```
+
+
+
+
+
+# Actions Taken
+```{r}
+#MMWR Specific Guideline
+# Actions taken. When appropriate, 1 or 2 sentences describing any control measures implemented.
+```
+
+
+\newpage
+# Discussion
+```{r}
+#MMWR Specific Guideline
+# Discussion. The Discussion should begin by stating the conclusions of the report, interpreting the results, conveying their public health meaning, and placing the results into context by citing comparative or corroborative studies. With the exception of Outbreak Reports, Full Reports should include a Limitations paragraph, typically placed near the end of the Discussion. The Discussion should conclude by stating the implications of the findings to public health practice and any recommendations for prevention and control. When appropriate, specific examples of successful public health interventions should be included. A common fault is the inclusion of recommendations that, although sound, do not follow from the analysis presented in the report.
+```
+
+\newpage
+# Acknowledgements
+```{r}
+#MMWR Specific Guideline
+# Acknowledgments. May be used to recognize the work of persons involved in the project but who do not meet MMWR  author criteria. The corresponding author should ensure that all named individuals have consented to being listed under Acknowledgments.
+```
+
+
+
+
+
+
+\newpage
+# References
+
+<div id="refs"></div>
+
+```{r}
+#MMWR Specific Guideline
+# References. Must be limited to 10.
+```
+
+
+# Tables & Figures
+
+
+
+
+\newpage
+# (APPENDIX) Appendix {-}
+
+## Other Authorship Guidelines
+```{r}
+#MMWR Other Non-Section-Specific Guideline
+# Authorship. Criteria for MMWR  authors are as follows:
+# MMWR  attribution policy follows CDC authorship policy (https://www.cdc.gov/maso/policy/authorship.pdf Adobe PDF file) and guidance from the International Committee of Medical Journal Editors
+# (http://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.htmlexternal icon).
+# Authorship credit should be based on three conditions, all of which must be met:: 1) substantial contributions to conception and design, acquisition of data, or analysis and interpretation of data; 2) drafting the report or revising it critically for important intellectual content; and 3) final approval of the version to be published.
+# All authors must assume responsibility for the published version of the manuscript. Authors should be able to defend their contribution independently. Collectively, authors should be able to defend the design, execution, and conclusions of the report.
+# Persons will not be listed as authors merely by virtue of their position in an organization or by attendance at a meeting. Similarly, participation solely in the acquisition of funding, the collection of data, or general supervision of the research group is not sufficient for authorship.
+# Persons or groups that reviewed a submission for a clearance process or who suggested revisions or limited changes to a submission will not be listed as authors.
+# An acknowledgments section may be used to recognize the work of persons who made substantial contributions to the project but who do not meet the MMWR  author criteria.
+# The list of authors follows the title. First and last names and middle initials (optional) should be used and the single highest academic degree (masters or above) should follow the names. The organizational affiliation will be footnoted as in the example. Contact information should be provided for the corresponding author.
+# The order of authorship should be a joint decision of the coauthors. MMWR  recognizes that scientific work is a collaboration and collaborators have a responsibility to define, accept, and fulfill their roles. MMWR  recommends that author order be discussed early during a collaboration and revised as needed as the work progresses. Authorship order, including choice of first author, should be based on the level of contribution to the report and the work underlying it. The first author will have responsibility for the integrity of the work as a whole from inception to publication. First authors also are responsible for providing leadership in determining order of the other coauthors, establishing writing assignments, providing direction for reviews and revisions, and compiling drafts. The first author should ensure an open forum for coauthors to share their concerns and suggestions and should ensure that all ethical considerations (e.g., IRB review, disclosure of conflicts of interest) have been addressed.
+# An example of the new author format is as follows:
+# Lung Cancer Incidence Trends Among Men and Women — United States, 2005–2009
+# S. Jane Henley, MSPH1, Thomas B. Richards, MD1, J. Michael Underwood, PhD1, Christie R. Eheman, PhD1, Marcus Plescia, MD,1 Timothy A. McAfee MD2
+# 1Div of Cancer Prevention and Control; 2Office on Smoking and Health, National Center for Chronic Disease Prevention and Health Promotion, CDC
+# (Corresponding author: S. Jane Henley, shenley@cdc.gov, 770-488-4157)
+```
+
+
+
+
+
+
+
+## Useful, Generic Document Features
+Code, text references, figures, tables, equations, ...
+```{r}
+#Journal Guideline
+
+```
+
+```{r}
+#Journal Section-Specific Guideline
+
+```
+
+```{r}
+#Journal Other Non-Section-Specific Guideline
+
+```
+
+
+
+```{r}
+# Text References
+# Figure \@ref(fig:figure1)
+# Table \@ref(tab:table1)
+# (ref:plot-caption) lotsnlots of words
+
+# (ref:tablecaption) lotsnlots of words
+# 
+# Equation \@ref(eq:dilution)
+# 
+# \begin{equation}
+#   Theoretical~LOD = \frac{1~viral~copy}{60\mu L} \times \frac{3\mu L}{25\mu L} \times \frac{2\mu L}{20\mu L} = 0.0002~copies~ \mu L^{-1} ~of~reaction.
+#   (\#eq:dilution)
+# \end{equation}
+
+# \begin{equation}
+#   N_n = N_0 \times (1+E)^n.
+#   (\#eq:doubling)
+# \end{equation}
+# 
+# 
+# \begin{equation}
+#   \begin{split}
+#       &Quantity_{N1} = 10^{-\frac{Ct - 34.008}{-3.3890}}, \\
+#       &Quantity_{N2} = 10^{-\frac{Ct - 32.416}{-3.3084}},
+#   \end{split}
+#   (\#eq:ct-seqs)
+# \end{equation}
+```
+
+
+```{r figureN, echo = F, message=F, warning=F, error=F, fig.height=6*9/16*1, fig.cap = "caption", eval=F}
+# png(filename = "./03-Output/02-Figures/figure1.png", width = 16, height = 9, units = "in", res = 300, pointsize = 16)
+# pdf(file = "./03-Output/02-Figures/figure1.pdf", width = 16, height = 9, pointsize = 16)
+
+
+# dev.off()
+
+# knitr::include_graphics(path = "./03-Output/02-Figures/figure1.png")
+
+```
+
+
+```{r, tableN, echo = F, message=F, warning=F, error=F, eval=F}
+
+flextable(table_df) %>% 
+  font(part = "all", fontname = "Arial") %>%
+  fontsize(part = "header", size = 9) %>% #toprow
+  fontsize(part = "body", size = 8) %>% 
+  border_remove() %>%
+  border(part = "header", border.bottom = fp_border_default(color = "black", width = 2)) %>%
+  width(j=1:2, width = 1) %>% #column width
+  merge_v(j=1) %>% 
+  valign(j=1, valign = "top") %>%
+  bold(part = "header") %>% 
+  set_caption(caption = "caption")
+```
+
+
+
+
+```{r, echo = F, message=F, warning=F, error=F, fig.cap = '(ref:plot-caption)', eval=F}
+
+```
+
+
+
+```{r, echo = F, message=F, warning=F, error=F, eval=F}
+
+flextable(table2) %>%
+  delete_part(part = "header") %>%
+  border_remove() %>%
+  
+  border(part = "body", i = which(), border.top = fp_border_default(color="black", width = 0.5)) %>% 
+  border(part = "body", i = which(), border.bottom = fp_border_default(color="black", width = 2)) %>%
+  font(part = "all", fontname = "Arial") %>% 
+  fontsize(part = "header", size = 9) %>%
+  fontsize(part = "body", size = 8) %>% 
+  fontsize(part = "body", i = which(), size = 9) %>%
+  
+  bold(part = "body", i = c(), j = 1) %>% 
+  fontsize(part = "body", i = c(), j = 1, size = 12) %>% 
+  
+  bold(part = "header") %>% 
+  bold(part = "body", i = c()) %>%
+  merge_v(j=2) %>% 
+  width(j=, width = 1) %>%
+  width(j=, width = 1.5) %>%
+  align(part = "header", align = "center") %>%
+  align(part = "body", j=, align = "right") %>% 
+  align(part = "body", i = c(), align = "center") %>% 
+  valign(part = "body", j=, valign = "top") %>%
+  bold(part = "body", j=, i = c()) %>% 
+  bold(part = "body", j=, i = c()) %>% 
+  italic(part = "body", j=, i = ) %>%
+  set_caption(caption = "(ref:tablecaption)") %>% 
+  compose(part="body", j=, i=, value = as_paragraph("P\U0302"))
+```
+
+
+
+  
+ 
+```{r, echo=F, message=F, warning=F, error=F, fig.height=6*9/16*2, fig.cap="caption", eval=F}
+# png(filename = "./03-Output/02-Figures/figure3.png", width = 16*2/5, height = 9*2/5*2, units = "in", res = 300, pointsize = 16)
+
+par(mfcol = c(2,1), mar = c(2.1, 2.1, 1.1, 0))
+
+# layout.show(2)
+plot()
+
+# put "A" in top left
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "A", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+
+plot()
+box()
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "B", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+# dev.off()
+```
+
+
+
+
+
+```{r, echo = F, message=F, warning=F, error=F, fig.height=6*9/16*2, fig.cap = "(ref:captiontextref)", eval=F}
+
+par(mfrow = c(2,2), mar = c(2.1,2.1,1.1,0.1))
+plot()
+legend("topright", lwd = c(2,0.5,2,0.5), lty = c(1,1,3,3), legend = c(expression(LOD[~N1]), expression(LOQ[~N1]), expression(frac(1,2) %*% LOD[~N1]),expression(frac(1,2) %*% LOQ[~N1])), bty = "n", y.intersp = 1.25, cex = 0.7)
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "A", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+
+plot()
+legend("topright", lwd = c(2,0.5,2,0.5), lty = c(1,1,3,3), legend = c(expression(LOD[~N2]), expression(LOQ[~N2]), expression(frac(1,2) %*% LOD[~N2]),expression(frac(1,2) %*% LOQ[~N2])), bty = "n", y.intersp = 1.25, cex = 0.7)
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "B", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+
+
+
+plot()
+legend("topright", lwd = c(2,0.5,2,0.5), lty = c(1,1,3,3), legend = c(expression(LOD[~N1]), expression(LOQ[~N1]), expression(frac(1,2) %*% LOD[~N1]),expression(frac(1,2) %*% LOQ[~N1])), bty = "n", y.intersp = 1.25, cex = 0.7)
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "C", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+
+plot()
+legend("topright", lwd = c(2,0.5,2,0.5), lty = c(1,1,3,3), legend = c(expression(LOD[~N2]), expression(LOQ[~N2]), expression(frac(1,2) %*% LOD[~N2]),expression(frac(1,2) %*% LOQ[~N2])), bty = "n", y.intersp = 1.25, cex = 0.7)
+text(par('usr')[1]-par('plt')[1]*diff(par('usr')[1:2])/diff(par('plt')[1:2]), 
+     par('usr')[4]+(1-par('plt')[4])*diff(par('usr')[3:4])/diff(par('plt')[3:4]), 
+     labels = "D", adj = c(0,1), xpd = T, cex = 1, font = 2)
+
+
+```
+
+

@@ -23,11 +23,16 @@ editor_options:
   chunk_output_type: console
   
 knit: (
-  function(inputFile, encoding) { 
+  function(input, ...) { 
     rmarkdown::render( 
-      input       = inputFile, 
-      encoding    = encoding,       
-      output_file = paste0("DRAFT_", format(Sys.Date(), "%Y%m%d"))
+      input       = input,     
+      output_file = paste0(
+          xfun::sans_ext(input), 
+          "_DRAFT_", 
+          format(Sys.Date(), "%Y%m%d"), 
+          '.', 
+          xfun::file_ext(input)
+      )
       ) 
       }
       )
