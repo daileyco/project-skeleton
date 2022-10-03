@@ -19,12 +19,11 @@ knit: (
     rmarkdown::render( 
       input       = input,     
       output_file = paste0(
-          xfun::sans_ext(input), 
-          "_DRAFT_", 
-          format(Sys.Date(), "%Y%m%d")
-      )
-      ) 
-      }
+        xfun::sans_ext(input), 
+        "_DRAFT_",
+        format(Sys.Date(), "%Y%m%d")
+        )) 
+        }
       )
     
 ---
@@ -70,10 +69,10 @@ Guidelines embedded for MMWR. Even if not seeking to publish there, the guidelin
 
 
 
-# RESEARCH QUESTION: What is the extent of COVID-19 prevention behaviors among UGA students?
+# RESEARCH QUESTION: ?
 
 # Summary
-```{r}
+```{r guidesummary}
 #MMWR Specific Guideline
 # Summary box. In 1 or 2 sentences for each, authors should answer the following: What is already known on this topic? What is added by this report? and What are the implications for public health practice?  These answers contain the key public health message, as well as the justification for the publication. Total word limit should be no more than 75‒100 words (see examples below). Answers longer than 100 words will be edited to meet the word limit.
 
@@ -110,7 +109,7 @@ Guidelines embedded for MMWR. Even if not seeking to publish there, the guidelin
 \newpage
 # Introduction {#introduction}
 
-```{r}
+```{r guideintro}
 #MMWR Specific Guideline
 # Introductory paragraph. The first paragraph of a Full Report is similar to both a newspaper lead paragraph (i.e., who, what, when, where, why, and how?) and the abstract of a report in a typical medical journal and is limited to 150–200 words. The introductory paragraph should contain the following components: 1) background (what is the problem? why is this worth writing about?), 2) method of analysis (who did what, using what data, and why?), 3) key findings (summarize 1 or 2 main results and any actions that resulted), and 4) public health message (what should be done by public health practitioners or, if relevant, by clinicians or the public?). All information regarding methods, data sources and results in the introductory paragraph is repeated elsewhere in the report.
 # Additional background (if needed). Each Full Report should be understandable by an informed medical or public health professional without special knowledge of the subject. If all essential background information will not fit in the Introductory paragraph, that background should be placed in a second introductory paragraph, before Methods.
@@ -121,12 +120,12 @@ Guidelines embedded for MMWR. Even if not seeking to publish there, the guidelin
 
 \newpage  
 # Methods
-```{r}
+```{r guidemethods}
 #MMWR Specific Guideline
 # Methods. For most reports, the second section should be a concise summary (1 or 2 paragraphs) of the methods used to conduct the analysis. Important components of this section might include the sources of data, a statement of how the data were collected, case definitions or participant selection criteria, the period of study, types of specimens taken and tests performed (e.g., serology, culture, or toxicology), and statistical methods used. For survey and surveillance data, response rates should be specified. For statistical software, provide the version and manufacturer in parentheses after the software name, as shown in the following example: “SAS (version 9.4; SAS Institute)” was used to conduct all analyses.
 ```
 
-```{r, echo=F, results='hide', message=F, warning=F, error=F}
+```{r citer, echo=F, results='hide', message=F, warning=F, error=F}
 # dput(RStudio.Version())
 rs.version <- list(citation = structure(list(structure(list(title = "RStudio: Integrated Development Environment for R",
                                                             author = structure(list(list(given = "RStudio Team", 
@@ -155,7 +154,7 @@ All analyses were carried out using R (`r gsub("R ", "", version$version.string)
 
 
 
-```{r, echo=F, results='hide', message=F, warning=F, error=F}
+```{r citepackages, echo=F, results='hide', message=F, warning=F, error=F}
 # need to check automatic writing of these cites, and the location for visual editor .bib
 my.packages <- c(# Data Import/Export
                  "readxl", "writexl",
@@ -182,7 +181,7 @@ rm(my.packages)
 
 # Results
 
-```{r}
+```{r guideresults}
 #MMWR Specific Guideline
 # Results. The results section is a concise highlighting of the major results of the analysis. Examples might include elements of the descriptive (i.e., time, place, person) and epidemiologic results, disease trends and rates, treatments, and outcomes. Minor results from tables or figures should not be highlighted in results. Case reports and series should include details on exposure, signs and symptoms, initial diagnosis, laboratory and radiologic findings, treatment, clinical course, and outcome. Generally, data highlighted in the text also are presented in a table or figure.
 ```
@@ -197,7 +196,7 @@ rm(my.packages)
 
 
 # Actions Taken
-```{r}
+```{r guideactions}
 #MMWR Specific Guideline
 # Actions taken. When appropriate, 1 or 2 sentences describing any control measures implemented.
 ```
@@ -205,14 +204,17 @@ rm(my.packages)
 
 \newpage
 # Discussion
-```{r}
+```{r guidediscuss}
 #MMWR Specific Guideline
 # Discussion. The Discussion should begin by stating the conclusions of the report, interpreting the results, conveying their public health meaning, and placing the results into context by citing comparative or corroborative studies. With the exception of Outbreak Reports, Full Reports should include a Limitations paragraph, typically placed near the end of the Discussion. The Discussion should conclude by stating the implications of the findings to public health practice and any recommendations for prevention and control. When appropriate, specific examples of successful public health interventions should be included. A common fault is the inclusion of recommendations that, although sound, do not follow from the analysis presented in the report.
 ```
 
+
+
+
 \newpage
 # Acknowledgements
-```{r}
+```{r guideack}
 #MMWR Specific Guideline
 # Acknowledgments. May be used to recognize the work of persons involved in the project but who do not meet MMWR  author criteria. The corresponding author should ensure that all named individuals have consented to being listed under Acknowledgments.
 ```
@@ -227,7 +229,7 @@ rm(my.packages)
 
 <div id="refs"></div>
 
-```{r}
+```{r guideref}
 #MMWR Specific Guideline
 # References. Must be limited to 10.
 ```
@@ -241,8 +243,8 @@ rm(my.packages)
 \newpage
 # (APPENDIX) Appendix {-}
 
-## Other Authorship Guidelines
-```{r}
+
+```{r guideother}
 #MMWR Other Non-Section-Specific Guideline
 # Authorship. Criteria for MMWR  authors are as follows:
 # MMWR  attribution policy follows CDC authorship policy (https://www.cdc.gov/maso/policy/authorship.pdf Adobe PDF file) and guidance from the International Committee of Medical Journal Editors
@@ -269,22 +271,6 @@ rm(my.packages)
 
 ## Useful, Generic Document Features
 Code, text references, figures, tables, equations, ...
-```{r}
-#Journal Guideline
-
-```
-
-```{r}
-#Journal Section-Specific Guideline
-
-```
-
-```{r}
-#Journal Other Non-Section-Specific Guideline
-
-```
-
-
 
 ```{r}
 # Text References
