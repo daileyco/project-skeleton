@@ -21,7 +21,8 @@ main.sections <- c("## Load Data",
 ## Scripts in repo
 
 scripts.all <- list.files("./02-Scripts", pattern = "[.]R$", full.names = TRUE, recursive = TRUE) %>%
-  `[`(., !grepl("Script_Census|template", .))
+  `[`(., !grepl("Script_Census|template", .)) %>% 
+  `[`(., order(file.info(.)$ctime))
 
 ### set up df
 
